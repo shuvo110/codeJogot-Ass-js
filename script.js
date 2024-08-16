@@ -65,3 +65,40 @@ document.getElementById('Problem-04').addEventListener('submit', (e)=>{
 });
 
 
+// <!-- Assignment-10 code start -->
+// no - 01
+document.getElementById('no-01').addEventListener('submit',(e)=>{
+    e.preventDefault()
+    let noValue = e.target.fastNumber.value;
+    let arr = noValue.split('').reverse().join(''); 
+    document.getElementById('output-show-no-01').innerText = `${noValue} এর বিপরিত সংখ্যা গুলো : ${arr}`
+});
+
+// no - 02
+// function eaNumber(allNumber) {
+//     let even = 0;
+//     let add = 0;
+//     for (let i = 0; i < allNumber.length; i++) {
+//         const element = allNumber[i];
+//         if (element % 2 == 0) {
+//             even ++;
+//         }
+//         else{
+//             add ++;
+//         }
+//     }
+//     console.log(even, add);
+// }
+// const ob = [2, 9, 12, 33, 90, 62]
+// const resul = eaNumber(ob);
+
+// no -03
+document.getElementById('no-02').addEventListener('submit',(e)=>{
+    e.preventDefault()
+    let noValue = e.target.fastNumber.value;
+    if (noValue % 2 === 0) {
+        document.getElementById('output-show-no-02').innerText = `${noValue} Prime Numbers " YES " `;
+    } else {
+        document.getElementById('output-show-no-02').innerText = `${noValue} Prime Numbers " NO " `;
+    }
+});
