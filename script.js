@@ -5,7 +5,7 @@ document.getElementById('Problem-01').addEventListener('submit', (e)=>{
     const fastNumber = parseInt(e.target.fastNumber.value);
     const senember = parseInt(e.target.secNumber.value);
     let add = ''
-    if (fastNumber > 0 && senember > 0) {
+    if ((fastNumber > 0 && senember > 0) && fastNumber < senember ) {
         for (let i = fastNumber; i <= senember; i++) {
             add += i
         }
@@ -51,17 +51,22 @@ document.getElementById('Problem-03').addEventListener('submit', (e)=>{
 document.getElementById('Problem-04').addEventListener('submit', (e)=>{
     e.preventDefault()
     const fastNumber = parseInt(e.target.fastNumber.value);
-    if (fastNumber <= 1 ) {
-        document.getElementById('output-show-problem-4').innerText = `${fastNumber} সংখ্যাটি : Not prime `;
-        return;
-    };
-    for (let i = 2; i < fastNumber; i++) {
-        if (fastNumber % i === 0) {
+    if (fastNumber == "") {
+        if (fastNumber <= 1 ) {
             document.getElementById('output-show-problem-4').innerText = `${fastNumber} সংখ্যাটি : Not prime `;
             return;
-        }
-    };
-    document.getElementById('output-show-problem-4').innerText = `${fastNumber} সংখ্যাটি : prime `;
+        };
+        for (let i = 2; i < fastNumber; i++) {
+            if (fastNumber % i === 0) {
+                document.getElementById('output-show-problem-4').innerText = `${fastNumber} সংখ্যাটি : Not prime `;
+                return;
+            }
+        };
+        document.getElementById('output-show-problem-4').innerText = `${fastNumber} সংখ্যাটি : prime `;
+    } 
+    else {
+        alert('plass number type')
+    }
 });
 
 
@@ -70,8 +75,13 @@ document.getElementById('Problem-04').addEventListener('submit', (e)=>{
 document.getElementById('no-01').addEventListener('submit',(e)=>{
     e.preventDefault()
     let noValue = e.target.fastNumber.value;
-    let arr = noValue.split('').reverse().join(''); 
-    document.getElementById('output-show-no-01').innerText = `${noValue} এর বিপরিত সংখ্যা গুলো : ${arr}`
+    if (noValue !== "") {
+        let arr = noValue.split('').reverse().join(''); 
+        document.getElementById('output-show-no-01').innerText = `${noValue} এর বিপরিত সংখ্যা গুলো : ${arr}`
+    } 
+    else {
+      alert('Plass number type')  
+    }
 });
 
 // no - 02
@@ -96,9 +106,66 @@ document.getElementById('no-01').addEventListener('submit',(e)=>{
 document.getElementById('no-02').addEventListener('submit',(e)=>{
     e.preventDefault()
     let noValue = e.target.fastNumber.value;
-    if (noValue % 2 === 0) {
-        document.getElementById('output-show-no-02').innerText = `${noValue} Prime Numbers " YES " `;
-    } else {
-        document.getElementById('output-show-no-02').innerText = `${noValue} Prime Numbers " NO " `;
+    if (noValue !== "") {
+        if (noValue % 2 === 0) {
+            document.getElementById('output-show-no-02').innerText = `${noValue} Prime Numbers " YES " `;
+        } else {
+            document.getElementById('output-show-no-02').innerText = `${noValue} Prime Numbers " NO " `;
+        }
+    } 
+    else {
+        alert('plass type number')
+    }
+});
+// <!-- Assignment-10 code stop -->
+
+// <!-- Assignment-11 code start -->
+// problem11-01 code start 
+document.getElementById('Problem11-01').addEventListener('submit',(e)=>{
+    e.preventDefault()
+    const textValue = e.target.fastText.value;
+    if (textValue !=="") {
+        let arr = [];
+        for (let i = 0; i < textValue.length; i++) {
+            for (let j = i+1; j <= textValue.length; j++) {
+                arr.push(textValue.slice(i,j))
+            }
+        }
+        document.getElementById('output-show-Problem11-01').innerText = `[${arr}]`;
+        return;   
+    } 
+    else {
+        alert('Plass type text')
+    }
+});
+
+// problem11-02 code start 
+document.getElementById('problem11-02').addEventListener('submit',(e)=>{
+    e.preventDefault();
+    const htmlDiv = document.getElementById('output-show-Problem11-02')
+    let value = e.target.fastText.value;
+    if (value !== "") {
+        for (let i = 0; i < value; i++) {
+            let paten = "";
+            for (let j = 0; j <= i; j++) {
+                paten +="*";
+            }
+            const newli = document.createElement('li');
+            newli.innerText = paten;
+            htmlDiv.appendChild(newli);
+        };
+        const newBtn = document.createElement('button');
+        newBtn.id =('resetBtn')
+        newBtn.innerText = 'reset'
+        newBtn.onclick = ()=>{
+            const htmlDivShowReset = htmlDiv;
+            htmlDivShowReset.innerHTML = "";
+            let value = e.target.fastText;
+            value.value ="";
+        }
+        htmlDiv.appendChild(newBtn);
+    } 
+    else {
+        alert('plass number type')
     }
 });
