@@ -51,7 +51,7 @@ document.getElementById('Problem-03').addEventListener('submit', (e)=>{
 document.getElementById('Problem-04').addEventListener('submit', (e)=>{
     e.preventDefault()
     const fastNumber = parseInt(e.target.fastNumber.value);
-    if (fastNumber == "") {
+    if (fastNumber !== "") {
         if (fastNumber <= 1 ) {
             document.getElementById('output-show-problem-4').innerText = `${fastNumber} সংখ্যাটি : Not prime `;
             return;
